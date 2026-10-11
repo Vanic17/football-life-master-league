@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.zip
+dist/
+football-life/*.json
+football-life/fl-saves/
+football-life/backups/
+football-life/engine/
+football-life/images/
+football-life/native-database/
+football-life/python/
+football-life/.runtime12/
