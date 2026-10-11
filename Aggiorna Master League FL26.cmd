@@ -15,6 +15,8 @@ if exist "%FL_ML_UPDATE_ROOT%" (
 )
 if exist "%FL_ML_UPDATE_ROOT%\runtime-path.txt" (
   for /f "usebackq delims=" %%R in ("%FL_ML_UPDATE_ROOT%\runtime-path.txt") do "%FL_ML_UPDATE_ROOT%\%%R\python.exe" -X utf8 "%FL_ML_UPDATE_ROOT%\update_manager.py"
+) else if exist "%FL_ML_UPDATE_ROOT%\runtime\py312-r1\python.exe" (
+  "%FL_ML_UPDATE_ROOT%\runtime\py312-r1\python.exe" -X utf8 "%FL_ML_UPDATE_ROOT%\update_manager.py"
 ) else if exist "%~dp0football-life\python\python.exe" (
   "%~dp0football-life\python\python.exe" -X utf8 "%~dp0football-life\update_manager.py"
 ) else (

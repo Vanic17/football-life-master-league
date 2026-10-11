@@ -1,9 +1,17 @@
 $ErrorActionPreference='Stop'
 Add-Type -AssemblyName System.Windows.Forms
 $taskRoot=$PSScriptRoot
-$python=Join-Path $taskRoot 'football-life\python\python.exe'
-if (!(Test-Path -LiteralPath $python)) { $python=Join-Path $taskRoot 'football-life\.runtime12\Scripts\python.exe' }
-if (Test-Path -LiteralPath (Join-Path $taskRoot 'football-life\runtime-path.txt')) { $runtime=(Get-Content -LiteralPath (Join-Path $taskRoot 'football-life\runtime-path.txt') -Raw).Trim(); if ($runtime -match '^runtime/[a-zA-Z0-9_.-]+$') { $python=Join-Path $taskRoot ('football-life/'+$runtime+'/python.exe') } }
+$pythonCandidates=@()
+$runtimeFile=Join-Path $taskRoot 'football-life\runtime-path.txt'
+if (Test-Path -LiteralPath $runtimeFile) {
+    $runtime=(Get-Content -LiteralPath $runtimeFile -Raw).Trim()
+    if ($runtime -match '^runtime[\\/][a-zA-Z0-9_.-]+$') { $pythonCandidates += Join-Path $taskRoot ('football-life\' + ($runtime -replace '/', '\') + '\python.exe') }
+}
+$pythonCandidates += Join-Path $taskRoot 'football-life\runtime\py312-r1\python.exe'
+$pythonCandidates += Join-Path $taskRoot 'football-life\python\python.exe'
+$pythonCandidates += Join-Path $taskRoot 'football-life\.runtime12\Scripts\python.exe'
+$python=$pythonCandidates | Where-Object { Test-Path -LiteralPath $_ } | Select-Object -First 1
+if (!$python) { throw 'Runtime Python non trovato: il pacchetto non e stato estratto completamente.' }
 try {
     try {
         $status=Invoke-RestMethod 'http://127.0.0.1:8770/fl/status' -TimeoutSec 1
