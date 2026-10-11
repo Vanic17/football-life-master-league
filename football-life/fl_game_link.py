@@ -76,6 +76,14 @@ def ensure_sider_profile():
     """Read original Sider; run a separate local profile without admin rights."""
     PROFILE.mkdir(exist_ok=True)
     source=GAME/'SiderAddons'
+    # A failed attachment can leave the portable Sider process alive even
+    # after the game closes. Stop only the process belonging to this profile
+    # before replacing its executable/DLL with the selected installation's.
+    for proc in psutil.process_iter(['name','exe']):
+        try:
+            if (proc.info.get('name') or '').lower()=='sider.exe' and proc.info.get('exe') and Path(proc.info['exe']).resolve().parent==PROFILE.resolve():
+                proc.terminate();proc.wait(timeout=5)
+        except (psutil.Error,OSError):pass
     for name in ('sider.exe','sider.dll','click.wav'):
         target=PROFILE/name
         # The portable package can come from another FL installation.  Sider
