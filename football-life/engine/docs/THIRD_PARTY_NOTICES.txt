@@ -1,0 +1,42 @@
+Third-party notices / 第三方声明
+============================================
+
+The packaged program (Master League 1.1.exe) includes the components below. Their full license texts
+are bundled inside the exe: open About -> Guide & licenses -> Third-party license texts.
+打包版（Master League 1.1.exe）包含下面这些第三方组件。许可全文打在 exe 里：「关于」→「说明和许可」→「第三方组件的许可原文」。
+
+Python runtime and standard library / Python 运行库和标准库
+  License: Python Software Foundation License (PSF-2.0). The full text also covers the
+  components shipped with Python (OpenSSL, libffi, zlib, bzip2, xz, expat and others).
+  https://www.python.org/                                   licenses/Python-LICENSE.txt
+
+PyInstaller bootloader / PyInstaller 启动器
+  License: GPL-2.0 with the PyInstaller bootloader exception, which allows the
+  generated executable to be distributed under any terms.
+  https://pyinstaller.org/                                  licenses/pyinstaller/
+
+NumPy
+  License: BSD-3-Clause. The Windows build also bundles OpenBLAS and other libraries;
+  their licenses are included in NumPy's license files.
+  https://numpy.org/                                        licenses/numpy/
+
+Pillow
+  License: MIT-CMU (HPND). Also covers the image libraries bundled with Pillow.
+  https://python-pillow.org/                                licenses/pillow/
+
+PyCryptodome
+  License: BSD-2-Clause, with parts in the public domain.
+  https://www.pycryptodome.org/                             licenses/pycryptodome/
+
+charset-normalizer, setuptools, cffi
+  License: MIT. Pulled in by the packaging tools.          licenses/<name>/
+
+Microsoft Visual C++ runtime (VCRUNTIME140*.dll, ucrtbase.dll, api-ms-win-*.dll)
+  Redistributed as permitted by Microsoft's Visual C++ Redistributable license terms.
+
+GSAP and the Flip plugin — animations in the user interface / 界面动画
+  Copyright GreenSock. Used under the GSAP Standard "No Charge" License.
+  https://gsap.com/standard-license
+
+Natural Earth — land outlines used by the globe animation / 地球仪动画的陆地轮廓
+  Public domain. Made with Natural Earth. https://www.naturalearthdata.com/

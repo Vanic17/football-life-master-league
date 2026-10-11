@@ -1,11 +1,10 @@
 __pycache__/
-*.pyc
+**/__pycache__/
 *.zip
 dist/
 football-life/*.json
 football-life/fl-saves/
 football-life/backups/
-football-life/engine/
 football-life/images/
 football-life/native-database/
 football-life/python/

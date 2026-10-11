@@ -1,68 +1,45 @@
-# Football Life Master League — integrazione e aggiornamenti
+# Master League Football Life — aggiornamenti completi
 
-Integrazione per Football Life 26 di una copia locale del gestionale Master League.
-Questo repository pubblica esclusivamente il codice dell'adattatore. Non contiene
-il motore originale RBs GameLab, database/immagini/file del gioco, runtime Python,
-EDIT, percorsi locali, credenziali o salvataggi personali.
+Release complete del programma per copie locali già configurate con Football Life
+26. Dal tag v1.1.0 le release comprendono motore del gestionale, interfaccia,
+integrazione, algoritmo economico, strumenti EDIT, dipendenze e runtime Python.
+La pubblicazione del motore è stata autorizzata dall'utente il 11 ottobre 2026,
+che ha dichiarato di avere scritto e revocato il precedente divieto.
+Le licenze e attribuzioni dei componenti di terze parti rimangono valide.
 
-Il motore originale va ottenuto separatamente dal suo autore. La sua licenza non
-consente di ripubblicarlo, neppure modificato. Queste release sono aggiornamenti
-per un'installazione locale esistente, non un installer autonomo del gestionale.
+## Aggiornamento sull'altro PC
 
-## Aggiornare una copia già installata
+Scarica `Aggiorna.Master.League.FL26.cmd` dalla pagina Releases e mettilo accanto
+ad `Avvia Master League FL26.cmd`. Aprilo: scarica e verifica la versione completa,
+chiude il gestionale di quella cartella e aggiorna tutti i file del programma.
+In futuro riusa lo stesso comando. Dopo il primo aggiornamento riesegui Configura
+per importare l'EDIT locale modificato, poi Avvia.
 
-1. Scarica `Aggiorna.Master.League.FL26.cmd` dalla pagina Releases e mettilo
-   nella cartella che contiene **Avvia Master League FL26.cmd**.
-2. Aprilo: anche la prima volta scarica l'aggiornatore e l'ultima patch.
-3. In futuro apri lo stesso comando: scarica l'ultima release,
-   verifica i file, crea un backup e aggiorna solo l'adattatore.
-4. Per importare un EDIT diverso esegui **Configura Master League FL26.cmd**.
+La patch conserva carriera, EDIT originale, database importato, immagini estratte
+dal proprio gioco, percorsi di installazione e backup. Non distribuisce FL_2026.exe,
+archivi CPK, dati/immagini del gioco, credenziali o salvataggi personali.
+Non è un installer autonomo: richiede la copia del gestionale già configurabile.
 
-Alternativa manuale: scarica `FL26-adapter-update.zip`, estrai `football-life`
-sopra la cartella omonima del gestionale, quindi esegui il comando Aggiorna.
+È pubblicata anche la piccola patch di transizione `FL26-adapter-update.zip` per
+i vecchi aggiornatori. La patch completa è `FL26-complete-update.zip`.
+Il runtime è versionato: cambiando Python o dipendenze crea una nuova cartella
+runtime e aggiorna il campo `runtime` del manifest, evitando DLL in uso.
 
-Carriere, configurazione locale, database importato e backup dell'EDIT non vengono
-sostituiti dalla patch. La sincronizzazione del gioco continua a creare backup.
-Il gioco deve essere chiuso prima di configurare o preparare una partita.
+## EDIT ed economia
 
-## EDIT modificati
+Importa modifiche di giocatori esistenti: abilità, nome, età, corpo, posizioni,
+skills e stili. I flag EDIT decidono quali gruppi sostituire. Aspetto conservato;
+abilità EDIT sincronizzate con la crescita della carriera. ID creati o database
+incompatibili richiedono ancora un importatore specifico.
 
-Importazione delle modifiche a giocatori già presenti nel database compatibile:
-nomi, abilità, età, fisico, posizioni, stili, skills. I flag EDIT determinano quali
-gruppi sostituiscono il database. Aspetto/volti e altri dati dell'EDIT restano
-conservati. Durante la sincronizzazione, le abilità modificate nell'EDIT vengono
-aggiornate con la progressione della carriera per evitare che annullino Player.bin.
-Nuovi ID creati o composizioni dei campionati incompatibili richiedono ancora un
-importatore del relativo database. La versione esatta del gioco è verificata.
+Valori online da Transfermarkt per identificazioni certe, in background aprendo
+la scheda, con cache settimanale. Senza dati online conserva valori disponibili
+o stime basate su abilità native/età. Capology può bloccare le richieste: non è
+garantita la copertura online degli stipendi. Contratti firmati persistono; nuovi
+ingaggi/rinnovi dipendono da valore, ruolo e budget. EUR lordi annui, bonus esclusi.
 
-## Economia
+## Prossime patch
 
-Valori pubblicati datati ove disponibili; stime basate sulle abilità native FL,
-età e modelli calibrati negli altri casi. Le fonti già abbinate vengono aggiornate
-in background quando si apre un giocatore, con cache di sette giorni. Se il sito
-blocca l'accesso o cambia formato restano disponibili i dati precedenti/le stime.
-Non è un accesso ufficiale alle API Transfermarkt/Capology e non garantisce dati
-in tempo reale o copertura totale. Nessun account/API key è incluso.
-Verifica della prima release: la pagina Transfermarkt di Maignan ha restituito
-20 milioni EUR; la richiesta alla fonte Capology è stata bloccata con HTTP 403.
-
-Gli stipendi sono EUR lordi annui, esclusi bonus. I nuovi contratti/rinnovi usano
-valore, ruolo e capacità economica della squadra di destinazione. Un contratto
-firmato è conservato nella carriera e non riscritto da una ricerca online.
-
-## Pubblicare una patch
-
-Modifica i sorgenti, esegui i test pertinenti, aggiorna il tag e pubblica un tag
-`vX.Y.Z`. GitHub Actions genera automaticamente ZIP e manifest SHA-256 e li
-pubblica nella release. La release comprende soltanto i moduli dell'adattatore.
-
-## Verifiche e limiti
-
-Test per overlay EDIT, preservazione aspetto, progressione, salario per budget,
-persistenza contratti, aggiornamento con backup/rollback e preservazione dati.
-Il file EDIT dell'altro PC va ancora provato su quell'installazione. Le statistiche
-avanzate e alcuni casi di autogol non sono ancora decodificati. Supplementari e
-rigori sono verificati offline, non ancora in tutte le situazioni sul campo.
-
-Riferimenti: https://implyingrigged.info/wiki/Pro_Evolution_Soccer_2021/Edit_file
-e licenza originale nella copia locale `engine/docs/LICENSE.txt`.
+Modifica i file, esegui i test pertinenti, fai commit e pubblica un tag `vX.Y.Z`.
+GitHub Actions verifica l'aggiornatore e pubblica automaticamente entrambe le ZIP.
+La distinta dei file e SHA-256 è nel manifest. Sono previsti backup e rollback.

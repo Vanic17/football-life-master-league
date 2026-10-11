@@ -1,0 +1,12 @@
+Master League for Football Life — permission notice
+
+Redistribution and publication of this customized program and its updates are
+permitted under the authorization supplied by the user on 11 October 2026,
+who stated that they authored the previous redistribution restriction and
+explicitly authorized removing it and publishing complete updates.
+
+Existing third-party components retain their respective licenses and notices.
+This permission does not apply to Football Life game executables, game archives,
+game-derived artwork/databases or other third-party game content.
+
+The software is provided without warranty. Preserve backups of game data.

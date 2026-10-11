@@ -19,7 +19,7 @@ with tempfile.TemporaryDirectory() as folder:
     assert (root/'module.py').read_text()=='NEW'
     assert (root/'fl-saves/career.json').read_bytes()==b'USER CAREER'
     assert (root/'installation.json').read_bytes()==b'USER PATHS'
-    assert (backup/'module.py').read_text()=='OLD'
+    assert (backup/'football-life/module.py').read_text()=='OLD'
     for path in ('football-life/../installation.json','football-life/installation.json','football-life/native-snapshot.json','football-life/C:\\escaped.py'):
         try:install_patch(patch({path:b'BAD'}),root)
         except ValueError:pass

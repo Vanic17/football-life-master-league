@@ -1,0 +1,31 @@
+{
+  "source": "https://www.capology.com/club/ac-milan/salaires/2025-2026/",
+  "season": "2025/26",
+  "retrieved_at": "2026-10-11",
+  "kind": "published_capology_estimate",
+  "units": "EUR gross fixed annual salary, excluding bonuses",
+  "players": {
+    "Adrien Rabiot": 9260000,
+    "Christopher Nkunku": 9260000,
+    "Luka Modrić": 6480000,
+    "Mike Maignan": 6410000,
+    "Rafael Leão": 6410000,
+    "Youssouf Fofana": 5560000,
+    "Christian Pulisic": 5130000,
+    "Ruben Loftus-Cheek": 5130000,
+    "Ardon Jashari": 4630000,
+    "Santiago Giménez": 4630000,
+    "Samuele Ricci": 4630000,
+    "Pervis Estupiñán": 4630000,
+    "Fikayo Tomori": 4490000,
+    "Matteo Gabbia": 3330000,
+    "Strahinja Pavlović": 3150000,
+    "Koni De Winter": 3150000,
+    "Niclas Füllkrug": 2410000,
+    "Zachary Athekame": 1850000,
+    "Pietro Terracciano": 1480000,
+    "Alexis Saelemaekers": 1280000,
+    "Davide Bartesaghi": 1110000,
+    "David Odogu": 930000
+  }
+}

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>大师联赛</title>
+<link rel="stylesheet" href="/style.css">
+<script>
+// 首屏（app.js 跑起来之前那一瞬间）也跟着语言走；之后 render() 会接管标题。不是中文就先用英文（译文包这时还没载入）
+try {
+  var L = localStorage.getItem("ml-lang") || ((navigator.language || "").toLowerCase().indexOf("zh") === 0 ? "zh" : "en");
+  if (L !== "zh") { document.title = "Master League"; }
+  document.addEventListener("DOMContentLoaded", function () {
+    if (L !== "zh") document.querySelector("#app .loading").textContent = "Loading game data…";
+  });
+} catch (e) { /* 无痕等极端情况，保持中文 */ }
+</script>
+</head>
+<body>
+<div id="app"><div class="loading">正在载入游戏数据…</div></div>
+<div id="modal" class="modal" hidden><div class="modal-box"><div id="modal-body"></div></div></div>
+<div id="confirm" class="confirm" hidden><div class="confirm-box" role="alertdialog" aria-modal="true" aria-labelledby="confirm-msg">
+  <p id="confirm-msg"></p>
+  <div class="confirm-actions"><button class="pill" id="confirm-no" data-sound="back"></button><button class="pill" id="confirm-yes"></button></div>
+</div></div>
+<div id="kickoff" class="kickoff" hidden></div>
+<div id="ceremony" class="ceremony" hidden></div>
+<div id="overview" class="overview" hidden></div>
+<div id="phone" class="phone" hidden role="dialog" aria-modal="true" aria-labelledby="phone-title"></div>
+<div id="dock" class="dock bare">
+  <button class="dock-phone" type="button" data-act="phone" tabindex="-1" hidden></button>
+  <div class="dock-ticker" hidden></div>
+  <div id="hints" class="hints" hidden></div>
+</div>
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+<script src="/vendor/gsap.min.js"></script>
+<script src="/vendor/Flip.min.js"></script>
+<script src="/pad.js"></script>
+<script src="/land.js"></script>
+<script src="/globe.js"></script>
+<script src="/cards.js"></script>
+<script src="/i18n.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>

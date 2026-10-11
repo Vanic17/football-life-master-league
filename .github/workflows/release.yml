@@ -19,4 +19,4 @@ jobs:
       - name: Publish release
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release create "$GITHUB_REF_NAME" dist/FL26-adapter-update.zip "Aggiorna Master League FL26.cmd" --title "$GITHUB_REF_NAME" --generate-notes
+        run: gh release create "$GITHUB_REF_NAME" dist/FL26-adapter-update.zip dist/FL26-complete-update.zip "Aggiorna Master League FL26.cmd" --title "$GITHUB_REF_NAME" --generate-notes
