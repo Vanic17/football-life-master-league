@@ -11,13 +11,15 @@ per un'installazione locale esistente, non un installer autonomo del gestionale.
 
 ## Aggiornare una copia già installata
 
-1. Scarica `FL26-adapter-update.zip` dalla pagina Releases.
-2. Estrai `football-life` sopra la cartella `football-life` del gestionale.
-3. Se il vecchio pacchetto non ha il comando Aggiorna, scarica anche
-   `Aggiorna Master League FL26.cmd` e mettilo accanto al comando Avvia.
-4. In futuro apri **Aggiorna Master League FL26.cmd**: scarica l'ultima release,
+1. Scarica `Aggiorna.Master.League.FL26.cmd` dalla pagina Releases e mettilo
+   nella cartella che contiene **Avvia Master League FL26.cmd**.
+2. Aprilo: anche la prima volta scarica l'aggiornatore e l'ultima patch.
+3. In futuro apri lo stesso comando: scarica l'ultima release,
    verifica i file, crea un backup e aggiorna solo l'adattatore.
-5. Per importare un EDIT diverso esegui **Configura Master League FL26.cmd**.
+4. Per importare un EDIT diverso esegui **Configura Master League FL26.cmd**.
+
+Alternativa manuale: scarica `FL26-adapter-update.zip`, estrai `football-life`
+sopra la cartella omonima del gestionale, quindi esegui il comando Aggiorna.
 
 Carriere, configurazione locale, database importato e backup dell'EDIT non vengono
 sostituiti dalla patch. La sincronizzazione del gioco continua a creare backup.
