@@ -18,7 +18,7 @@ def install_patch(payload,root=ROOT):
         # Patches can update adapter scripts, not user data or game content.
         for name,sha in files.items():
             p=PurePosixPath(name)
-            if len(p.parts)!=2 or p.parts[0]!='football-life' or p.suffix not in ('.py','.js','.lua') or p.name.startswith('test_'):
+            if len(p.parts)!=2 or p.parts[0]!='football-life' or p.suffix not in ('.py','.js','.lua') or p.name.startswith('test_') or '\\' in p.name or ':' in p.name or (root/p.name).resolve().parent!=root:
                 raise ValueError('Percorso patch non consentito: '+name)
             if hashlib.sha256(z.read(name)).hexdigest()!=sha:raise ValueError('Verifica patch fallita: '+name)
         backup=root/'backups'/('update-'+datetime.now().strftime('%Y%m%d-%H%M%S-%f'))

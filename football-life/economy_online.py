@@ -20,8 +20,12 @@ def euro_amount(text):
 
 def fetch(url):
     # Only known source links matched to native IDs; never guess a namesake.
-    from urllib.parse import urlsplit
+    from urllib.parse import urlsplit,urlunsplit
     host=urlsplit(url).hostname or ''
+    # The stored dataset uses UK links. Request the same stable player ID on
+    # the international site so pounds are never mistaken for euros.
+    if host in ('www.transfermarkt.co.uk','transfermarkt.co.uk','www.transfermarkt.de','transfermarkt.de'):
+        parts=urlsplit(url);url=urlunsplit((parts.scheme,'www.transfermarkt.com',parts.path,parts.query,parts.fragment));host='www.transfermarkt.com'
     if not (host.endswith('.transfermarkt.com') or host=='transfermarkt.com' or host.endswith('.capology.com') or host=='capology.com'):
         raise ValueError('Fonte non supportata')
     request=urllib.request.Request(url,headers={'User-Agent':'FootballLifeCareer/1.1 (personal source refresh)'})
@@ -41,6 +45,7 @@ def refresh(pid,row):
             url=row.get(source)
             if not url:continue
             try:
+                if kind=='wage' and '/player/' not in url:raise ValueError('Fonte di squadra: nessun salario individuale verificabile online')
                 page=fetch(url)
                 pattern=r'data-header__market-value-wrapper[^>]*>(.*?)</a>' if kind=='market' else r'Gross Fixed Salary of\s*(.{1,100}?)\s*for the\s*(\d{4}-\d{4})'
                 match=re.search(pattern,page,re.S|re.I)

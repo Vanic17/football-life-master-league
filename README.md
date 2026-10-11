@@ -41,6 +41,8 @@ in background quando si apre un giocatore, con cache di sette giorni. Se il sito
 blocca l'accesso o cambia formato restano disponibili i dati precedenti/le stime.
 Non è un accesso ufficiale alle API Transfermarkt/Capology e non garantisce dati
 in tempo reale o copertura totale. Nessun account/API key è incluso.
+Verifica della prima release: la pagina Transfermarkt di Maignan ha restituito
+20 milioni EUR; la richiesta alla fonte Capology è stata bloccata con HTTP 403.
 
 Gli stipendi sono EUR lordi annui, esclusi bonus. I nuovi contratti/rinnovi usano
 valore, ruolo e capacità economica della squadra di destinazione. Un contratto
