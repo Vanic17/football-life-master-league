@@ -80,6 +80,17 @@ class App(server.App):
         return result
     def showcase_view(self,cid):return {'cards':[]}
     def plugin_changed(self):return False
+    def market_search(self,q):
+        result=super().market_search(q)
+        # FL's special national-team-only pool contains classic/icon players
+        # (Zidane, Tevez, Giggs, etc.).  They are not active 2026 footballers
+        # and must not be available as free agents in this career.
+        result['rows']=[row for row in result.get('rows',[]) if row.get('nt') is None]
+        return result
+    def market_view(self):
+        result=super().market_view()
+        result['nt_free']=[]
+        return result
     def team_name(self,tid):
         game=getattr(self,'game',None)
         return game.teams[int(tid)]['latin'] if game and int(tid) in game.teams else str(tid)

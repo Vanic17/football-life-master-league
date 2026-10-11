@@ -78,7 +78,10 @@ def ensure_sider_profile():
     source=GAME/'SiderAddons'
     for name in ('sider.exe','sider.dll','click.wav'):
         target=PROFILE/name
-        if not target.exists():shutil.copy2(source/name,target)
+        # The portable package can come from another FL installation.  Sider
+        # and its DLL must always match the version selected during setup.
+        if not target.exists() or digest(target)!=digest(source/name):
+            shutil.copy2(source/name,target)
     shutil.copytree(source/'modules',PROFILE/'modules',dirs_exist_ok=True)
     content=PROFILE/'content'
     if not content.exists():
